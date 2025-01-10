@@ -22,7 +22,6 @@ async function fetchSalaries() {
     });
 }
 
-// Add or update salary
 async function saveSalary(event) {
     event.preventDefault();
     const id = document.getElementById("id").value;
@@ -45,7 +44,6 @@ async function saveSalary(event) {
     fetchSalaries();
 }
 
-// Edit salary
 async function editSalary(id) {
     const response = await fetch(`${apiUrl}/${id}`);
     const salary = await response.json();
@@ -56,7 +54,6 @@ async function editSalary(id) {
     document.getElementById("deductions").value = salary.deductions;
 }
 
-// Delete salary
 async function deleteSalary(id) {
     if (confirm("Are you sure you want to delete this salary?")) {
         await fetch(`${apiUrl}/${id}`, { method: "DELETE" });
@@ -64,8 +61,7 @@ async function deleteSalary(id) {
     }
 }
 
-// Attach form submission
 document.getElementById("salary-form").addEventListener("submit", saveSalary);
 
-// Initialize
+
 fetchSalaries();
